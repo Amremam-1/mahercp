@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+/* :root {
+  --tecture-font: "Figtree", sans-serif;
+  --tecture-font-2: "Barlow Semi Condensed", sans-serif;
+} */
+
+body {
+  font-family: "Barlow Semi Condensed", sans-serif !important;
+}
+
+.fontFigtree {
+  font-family: "Figtree", sans-serif !important;
+}
+
+
+ul,
+li {
+  list-style: none;
+  font-family: "Figtree", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+button {
+  outline: none;
+  cursor: pointer !important;
+}
+
+.btn {
+  text-transform: capitalize;
+  padding: 13px 40px;
+  position: relative;
+  z-index: 1;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: #f4911e;
+  color: #1f2022;
+  transition: background-color 0.5s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 51%;
+    top: 0;
+    left: 0;
+    background: #1f2022;
+    z-index: -1;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 51%;
+    bottom: 0;
+    right: 0;
+    background: #1f2022;
+    z-index: -1;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  &:hover::after,
+  &:hover::before {
+    height: 100%;
+  }
+
+  &:hover {
+    background-color: #fff;
+    color: #fff;
+  }
+}
+
+
+.btnDark {
+  text-transform: capitalize;
+  padding: 13px 32px;
+  position: relative;
+  z-index: 1;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: #f4911e;
+  color: #ffffff;
+  transition: background-color 0.5s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 51%;
+    top: 0;
+    left: 0;
+    background: wheat;
+    z-index: -1;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 51%;
+    bottom: 0;
+    right: 0;
+    background: wheat;
+    z-index: -1;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  &:hover::after,
+  &:hover::before {
+    height: 100%;
+  }
+
+  &:hover {
+    background-color: black;
+    color: #1f2022;
+  }
+}
+
+
+
+
+@keyframes partners-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes right-to-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-30px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes top-to-bottom {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-30px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
