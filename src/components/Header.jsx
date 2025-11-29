@@ -6,12 +6,15 @@ import ThemeContext from "./ThemeContext"
 import TopBar from "./TopBar"
 import { navLinks } from "../constant"
 import MobileMenu from "./MobileMenu"
+import { useTranslation } from "react-i18next"
 
 const Header = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [openLangDropdown, setOpenLangDropdown] = useState(false)
 
   const [menuOpen, setMenuOpen] = useState(false)
+  const { i18n } = useTranslation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,7 +56,7 @@ const Header = () => {
                   to=""
                   className="hover:text-orange-500 font-medium fontFigtree"
                 >
-                  {link.label.en}
+                  {i18n.language === "en" ? link.label.en : link.label.ar}
                 </Link>
               </li>
             ))}
@@ -71,10 +74,44 @@ const Header = () => {
               <IoMoon size={18} />
             )}
           </button>
-          <button className="hidden md:flex border px-3 py-1 rounded-md hover:border-orange-500 transition">
-            🌐
-          </button>
+          <div className="relative hidden md:block">
+            <button
+              onClick={() => setOpenLangDropdown((prev) => !prev)}
+              className="border px-3 py-1 rounded-md hover:border-orange-500 transition"
+            >
+              {i18n.language === "ar" ? "AR" : "EN"}
+            </button>
 
+            {openLangDropdown && (
+              <ul className="absolute right-0 mt-2 w-32 bg-white dark:bg-black text-sm rounded-lg shadow-md overflow-hidden z-50">
+                <li
+                  onClick={() => {
+                    i18n.changeLanguage("en")
+                    localStorage.setItem("i18nextLng", "en")
+                    setOpenLangDropdown(false)
+                  }}
+                  className={`px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                    i18n.language === "en" ? "font-semibold text-amber-600" : ""
+                  }`}
+                >
+                  English
+                </li>
+
+                <li
+                  onClick={() => {
+                    i18n.changeLanguage("ar")
+                    localStorage.setItem("i18nextLng", "ar")
+                    setOpenLangDropdown(false)
+                  }}
+                  className={`px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                    i18n.language === "ar" ? "font-semibold text-amber-600" : ""
+                  }`}
+                >
+                  العربية
+                </li>
+              </ul>
+            )}
+          </div>{" "}
           <a
             href="https://nfass.net/"
             target="_blank"
@@ -84,7 +121,6 @@ const Header = () => {
           >
             MBN KSA ↗
           </a>
-
           <button
             className="md:hidden text-3xl"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -93,43 +129,6 @@ const Header = () => {
           </button>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {/* {menuOpen && (
-        <div
-          className={`fixed top-[90px] left-0 w-full md:hidden z-40 ${
-            darkMode ? "bg-[#1f2022] text-white" : "bg-white text-gray-800"
-          } shadow-lg`}
-        >
-          <ul className="flex flex-col gap-5 p-6">
-            {navLinks.map((link) => (
-              <li key={link.id}>
-                <Link
-                  to={link.path || ""}
-                  onClick={() => setMenuOpen(false)}
-                  className="block text-lg font-medium hover:text-orange-500"
-                >
-                  {link.label.en}
-                </Link>
-              </li>
-            ))}
-
-            <hr className="opacity-30" />
-
-            <button className="border px-4 py-2 rounded-md w-full text-left">
-              🌐 Language
-            </button>
-
-            <a
-              href="https://nfass.net/"
-              target="_blank"
-              className={`text-center ${darkMode ? "btnDark" : "btn"}`}
-            >
-              MBN KSA ↗
-            </a>
-          </ul>
-        </div>
-      )} */}
 
       <MobileMenu
         menuOpen={menuOpen}

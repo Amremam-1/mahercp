@@ -9,6 +9,7 @@ import "swiper/css/effect-fade"
 import "swiper/css/pagination"
 import ThemeContext from "./ThemeContext"
 import { slides } from "../constant"
+import { useTranslation } from "react-i18next"
 
 // Animation Variants
 const slideVariants = {
@@ -34,6 +35,8 @@ const HeroSection = () => {
   const handleSlideChange = (swiper) => {
     setActiveIndex(swiper.realIndex)
   }
+
+  const { t, i18n } = useTranslation()
 
   return (
     <div className="relative w-full max-h-screen overflow-hidden bg-[#0c0c0c] dark:bg-white">
@@ -99,23 +102,23 @@ const HeroSection = () => {
                 )}
               </AnimatePresence>
 
-              {/* النص */}
+              {/* النصوص */}
               <AnimatePresence mode="wait">
                 {activeIndex === index && (
                   <motion.div
-                    key={slide.id}
-                    className="relative z-10  text-white  pt-40 pb-20 px-4 "
+                    key={`${slide.id}-${i18n.language}`} // المفتاح مرتبط باللغة + id
+                    className="relative z-10 text-white pt-40 pb-20 px-4"
                     variants={slideVariants}
                     initial="hidden"
                     animate="visible"
                     exit="exit"
                   >
-                    <h2 className="capitalize leading-tight max-sm:text-4xl max-md:text-[55px]  max-[992px]:text-[65px]  text-[70px] font-bold drop-shadow-lg text-white">
-                      {slide.title1}
+                    <h2 className="capitalize leading-tight max-sm:text-4xl max-md:text-[55px] max-[992px]:text-[65px] text-[70px] font-bold drop-shadow-lg text-white">
+                      {i18n.language === "en" ? slide.titleEn1 : slide.titleAr1}
                       <br />
-                      {slide.title2}
+                      {i18n.language === "en" ? slide.titleEn2 : slide.titleAr2}
                       <br />
-                      {slide.title3}
+                      {i18n.language === "en" ? slide.titleEn3 : slide.titleAr3}
                     </h2>
                     <button
                       className={`fontFigtree ${
@@ -126,7 +129,7 @@ const HeroSection = () => {
                         target="_blank"
                         href="https://api.whatsapp.com/send/?phone=97317453190&text&type=phone_number&app_absent=0"
                       >
-                        Contact Us ↗
+                        {t("contact")} ↗
                       </a>
                     </button>
                   </motion.div>
@@ -139,29 +142,30 @@ const HeroSection = () => {
         {/* الأسهم */}
         <div
           ref={prevRef}
-          className="custom-prev absolute top-1/2 left-4 z-20 cursor-pointer  text-[#ccc] text-5xl select-none"
+          className="custom-prev absolute top-1/2 left-4 z-20 cursor-pointer text-[#ccc] text-5xl select-none"
         >
           ‹
         </div>
         <div
           ref={nextRef}
-          className="custom-next absolute top-1/2 right-4 z-20 cursor-pointer text-[#ccc]  text-5xl select-none"
+          className="custom-next absolute top-1/2 right-4 z-20 cursor-pointer text-[#ccc] text-5xl select-none"
         >
           ›
         </div>
       </Swiper>
 
+      {/* Pagination Custom */}
       <style>
         {`
-    .swiper-pagination-bullet {
-      background: ${darkMode ? "#000" : "#fff"};
-      opacity: 0.7;
-    }
-    .swiper-pagination-bullet-active {
-      opacity: 1;
-      transform: scale(1.2);
-    }
-  `}
+          .swiper-pagination-bullet {
+            background: ${darkMode ? "#000" : "#fff"};
+            opacity: 0.7;
+          }
+          .swiper-pagination-bullet-active {
+            opacity: 1;
+            transform: scale(1.2);
+          }
+        `}
       </style>
     </div>
   )

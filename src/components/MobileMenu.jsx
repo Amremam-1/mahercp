@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
 import { HiOutlineX } from "react-icons/hi"
 import { socialLinks } from "../constant"
+import { useTranslation } from "react-i18next"
 
 const MobileMenu = ({ menuOpen, setMenuOpen, navLinks }) => {
+  const { t, i18n } = useTranslation()
   return (
     <div
       className={`fixed inset-0 z-50 md:hidden transition-all duration-300 ${
@@ -43,7 +45,7 @@ const MobileMenu = ({ menuOpen, setMenuOpen, navLinks }) => {
                 onClick={() => setMenuOpen(false)}
                 className="text-lg font-medium hover:text-orange-500 transition"
               >
-                {link.label.en}
+                {i18n.language === "en" ? link.label.en : link.label.ar}
               </Link>
             </li>
           ))}
@@ -67,13 +69,21 @@ const MobileMenu = ({ menuOpen, setMenuOpen, navLinks }) => {
         {/* Language Switch */}
         <div className="flex items-center gap-3 mt-6">
           <button
-            onClick={() => setMenuOpen(false)}
+            onClick={() => {
+              i18n.changeLanguage("en")
+              localStorage.setItem("i18nextLng", "en")
+              // setMenuOpen(false)
+            }}
             className="px-4 py-1 border border-white/30 rounded-md text-sm hover:border-orange-500 hover:text-orange-500 transition"
           >
             EN
           </button>
           <button
-            onClick={() => setMenuOpen(false)}
+            onClick={() => {
+              i18n.changeLanguage("ar")
+              localStorage.setItem("i18nextLng", "ar")
+              // setMenuOpen(false)
+            }}
             className="px-4 py-1 border border-white/30 rounded-md text-sm hover:border-orange-500 hover:text-orange-500 transition"
           >
             AR

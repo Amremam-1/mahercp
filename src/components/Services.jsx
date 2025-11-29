@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import { servicesCards } from "../constant"
 import { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -17,7 +18,7 @@ const itemVariants = {
 
 export default function Services() {
   const [visible, setVisible] = useState(false)
-
+  const { t, i18n } = useTranslation()
   useEffect(() => {
     const toggleVisibility = () => {
       setVisible(window.scrollY > 300)
@@ -40,7 +41,7 @@ export default function Services() {
           viewport={{ once: false }}
           className="text-3xl md:text-4xl uppercase font-bold text-gray-900 dark:text-gray-100 mb-12"
         >
-          Our Services
+          {t("ourServices")}
         </motion.h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
@@ -58,7 +59,7 @@ export default function Services() {
                 <service.icon />
               </div>
               <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 tracking-wide">
-                {service.title}
+                {i18n.language === "en" ? service.titleEn : service.titleAr}
               </h3>
             </motion.div>
           ))}

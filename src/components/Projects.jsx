@@ -1,7 +1,9 @@
 import { motion } from "framer-motion"
 import ProjectNavgation from "./ProjectNavgation"
+import { useTranslation } from "react-i18next"
 
 const Projects = () => {
+  const { t } = useTranslation()
   return (
     <section
       className="py-20 bg-white dark:bg-[#1f2022]
@@ -14,7 +16,7 @@ const Projects = () => {
           transition={{ duration: 0.5 }}
           className="text-3xl md:text-4xl uppercase font-bold text-gray-900 dark:text-gray-100 mb-12"
         >
-          Our Projects
+          {t("ourProjects")}
         </motion.h2>
       </div>
 

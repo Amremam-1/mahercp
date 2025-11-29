@@ -2,13 +2,14 @@ import { News } from "../constant"
 import CountUp from "react-countup"
 import { useInView } from "react-intersection-observer"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 
 const Details = () => {
   const { ref, inView } = useInView({
     triggerOnce: false, // يبدأ مرة واحدة فقط
-    threshold: 0.3, // يبدأ لما 30% من العنصر تظهر في الشاشة
+    // threshold: 0.3, // يبدأ لما 30% من العنصر تظهر في الشاشة
   })
-
+  const { i18n } = useTranslation()
   return (
     <section
       className="py-20 bg-[#1f2022]  overflow-hidden
@@ -39,7 +40,9 @@ const Details = () => {
               </motion.div>
             )}
 
-            <span className="text-2xl">{item.titleEn}</span>
+            <span className="text-2xl">
+              {i18n.language === "en" ? item.titleEn : item.titleAr}
+            </span>
           </div>
         ))}
       </div>

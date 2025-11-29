@@ -1,6 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion"
 
+import { useTranslation } from "react-i18next"
+
 const ProjectCards = ({ filteredProjects }) => {
+  const { t, i18n } = useTranslation()
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -25,16 +28,20 @@ const ProjectCards = ({ filteredProjects }) => {
             <div className="overflow-hidden">
               <motion.img
                 src={project.image}
-                alt={project.title}
+                alt={project.titleEn}
                 className="w-full h-56 object-cover rounded-xl group-hover:scale-110 transition-transform duration-500"
               />
             </div>
 
             <div className="p-5">
               <h3 className="text-lg font-semibold group-hover:text-[#f4911e] transition-colors">
-                {project.title}
+                {i18n.language === "en" ? project.titleEn : project.titleAr}
               </h3>
-              <p className="text-sm opacity-75 mt-1">{project.subtitle}</p>
+              <p className="text-sm opacity-75 mt-1">
+                {i18n.language === "en"
+                  ? project.subtitleEn
+                  : project.subtitleAr}
+              </p>
             </div>
           </motion.a>
         ))}
@@ -46,7 +53,7 @@ const ProjectCards = ({ filteredProjects }) => {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="text-3xl md:text-4xl uppercase font-bold text-gray-900 dark:text-gray-100 col-span-full text-center mt-10"
           >
-            No Projects Found
+            {t("NoProjectsFound")}
           </motion.h2>
         )}
       </motion.div>

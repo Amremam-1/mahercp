@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom"
 import "aos/dist/aos.css"
 import { ThemeProvider } from "./components/ThemeContext"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import "./i18n"
 
 const queryClient = new QueryClient()
 

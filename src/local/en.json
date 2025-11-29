@@ -1,0 +1,19 @@
+{
+  "workingHours": {
+    "label,": "Working Hours:",
+    "open": "Open Now (Sun - Thu, 9:00 AM - 5:00 PM)",
+    "closed": "Closed Now (Sun - Thu, 9:00 AM - 5:00 PM)"
+  },
+  "contact": "Contact Us",
+  "ourServices": "Our Services",
+  "ourProjects": "Our Projects",
+  "NoProjectsFound": "No Projects Found",
+
+  "titleA": "Maher Bin Nayif Al-Harithi IT Group",
+  "titleB": "Innovative Software Solutions",
+  "titleC": "Continuous Technical Support",
+
+  "footSubtitle": "Maher Bin Nayif Al-harthi IT Group offers innovative software solutions and continuous technical support to serve our clients with the highest level of professionalism and quality.",
+  "copyrightText": "© 2025 Copyright",
+  "copyrightRest": "| All rights reserved"
+}

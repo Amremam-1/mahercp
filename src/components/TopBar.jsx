@@ -4,10 +4,12 @@ import { FaClock, FaPhoneAlt } from "react-icons/fa"
 import { IoMdMail } from "react-icons/io"
 
 import { socialLinks } from "../constant"
+import { useTranslation } from "react-i18next"
 
 const TopBar = () => {
   const { darkMode } = useContext(ThemeContext)
   const [isScrolled, setIsScrolled] = useState(false)
+  const { t, i18n } = useTranslation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,10 +60,8 @@ const TopBar = () => {
           <div className="flex items-center gap-2">
             <FaClock className="text-orange-500" />
             <p className="text-[16px] ">
-              ساعات العمل:{" "}
-              {isOpen
-                ? "مفتوح حاليًا (الأحد - الخميس، 9:00 ص - 5:00 م)"
-                : "مغلق حاليًا (الأحد - الخميس، 9:00 ص - 5:00 م)"}
+              {t("workingHours.label")}{" "}
+              {isOpen ? t("workingHours.open") : t("workingHours.closed")}
             </p>
           </div>
         </div>
