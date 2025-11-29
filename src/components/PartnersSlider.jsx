@@ -11,7 +11,7 @@ export default function PartnersSlider() {
         <div
           className="
               flex items-center gap-16
-              animate-[partners-scroll_20s_linear_infinite]
+              animate-[partners-scroll_10s_linear_infinite]
               hover:[animation-play-state:paused]
             "
         >

@@ -19,13 +19,13 @@ const MobileMenu = ({ menuOpen, setMenuOpen, navLinks }) => {
 
       {/* Menu Panel */}
       <div
-        className={`relative w-[85%] max-w-sm h-full bg-[#1f2022] text-white p-6 flex flex-col transform transition-transform duration-500 ease-in-out ${
+        className={`overflow-y-auto custom-scroll relative w-[85%] max-w-sm h-full bg-[#1f2022] text-white p-6 flex flex-col transform transition-transform duration-500 ease-in-out ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <img src="/images/logo.png" alt="logo" className="h-12" />
+          <img src="/images/logo.png" alt="logo" className="h-20" />
           <button
             onClick={() => setMenuOpen(false)}
             className="text-3xl hover:text-orange-500 transition"
@@ -79,6 +79,13 @@ const MobileMenu = ({ menuOpen, setMenuOpen, navLinks }) => {
             AR
           </button>
         </div>
+        <a
+          href="https://nfass.net/"
+          target="_blank"
+          className={`w-fit m-auto my-2 fontFigtree btn dark:btnDark border`}
+        >
+          MBN KSA ↗
+        </a>
         {/* Social Icons */}
         <div className="flex items-center gap-3">
           {socialLinks.map((icon) => (
