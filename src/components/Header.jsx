@@ -43,7 +43,7 @@ const Header = () => {
         <div className="h-20">
           <img
             src="/images/logo.png"
-            alt="logo"
+            alt="Ben Nayef Logo"
             className="h-full object-contain cursor-pointer"
           />
         </div>

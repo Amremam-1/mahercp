@@ -1,5 +1,4 @@
-import { logos } from "../constant";
-
+import { logos } from "../constant"
 
 export default function PartnersSlider() {
   return (
@@ -19,7 +18,7 @@ export default function PartnersSlider() {
             <img
               key={index}
               src={src}
-              alt="logo"
+              alt="Ben nayef partners"
               className="
                   h-30 md:h-40
                   w-auto object-contain

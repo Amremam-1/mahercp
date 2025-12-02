@@ -34,10 +34,10 @@ const ProjectCards = ({ filteredProjects }) => {
             </div>
 
             <div className="p-5">
-              <h3 className="text-lg font-semibold group-hover:text-[#f4911e] transition-colors">
+              <h3 className="text-lg font-semibold text-[#f4911e] transition-colors">
                 {i18n.language === "en" ? project.titleEn : project.titleAr}
               </h3>
-              <p className="text-sm opacity-75 mt-1">
+              <p className="text-sm opacity-75 mt-1 text-gray-800 dark:text-gray-200">
                 {i18n.language === "en"
                   ? project.subtitleEn
                   : project.subtitleAr}
