@@ -115,7 +115,7 @@ const Header = () => {
           <a
             href="https://nfass.net/"
             target="_blank"
-            className={`hidden md:block fontFigtree ${
+            className={` fontFigtree ${
               darkMode ? "btnDark" : "btn"
             }`}
           >
